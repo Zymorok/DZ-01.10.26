@@ -15,6 +15,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery } from "convex/react";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as ImagePicker from "expo-image-picker";
 import { File } from "expo-file-system";
 import { fetch } from "expo/fetch";
@@ -27,6 +28,7 @@ import { TypingDots } from "@/components/TypingDots";
 export default function ChatRoomScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const chatRoomId = id as Id<"chatRooms">;
   const room = useQuery(api.rooms.getRoom, { roomId: id });
   const messages = useQuery(api.messages.listMessages, { chatRoomId: id });
@@ -209,6 +211,7 @@ export default function ChatRoomScreen() {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={insets.top}
       style={{ flex: 1, backgroundColor: COLORS.background }}
     >
       <View className="flex-row items-center px-3 py-3 border-b border-surfaceLight gap-3">

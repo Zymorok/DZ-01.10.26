@@ -8,12 +8,14 @@ import {
 } from "react-native";
 import { useState } from "react";
 import { useRouter } from "expo-router";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { COLORS } from "@/constants/theme";
 
 export default function NewRoomScreen() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const createRoom = useMutation(api.rooms.createRoom);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -40,6 +42,7 @@ export default function NewRoomScreen() {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={insets.top}
       style={{ flex: 1, backgroundColor: COLORS.background }}
     >
       <View className="flex-row items-center justify-between p-4 border-b border-surfaceLight">
