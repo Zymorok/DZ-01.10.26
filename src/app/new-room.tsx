@@ -40,7 +40,7 @@ export default function NewRoomScreen() {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      className="flex-1 bg-black"
+      style={{ flex: 1, backgroundColor: COLORS.background }}
     >
       <View className="flex-row items-center justify-between p-4 border-b border-surfaceLight">
         <TouchableOpacity

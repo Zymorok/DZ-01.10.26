@@ -209,7 +209,7 @@ export default function ChatRoomScreen() {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      className="flex-1 bg-black"
+      style={{ flex: 1, backgroundColor: COLORS.background }}
     >
       <View className="flex-row items-center px-3 py-3 border-b border-surfaceLight gap-3">
         <TouchableOpacity
