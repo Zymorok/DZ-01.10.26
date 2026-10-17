@@ -45,7 +45,7 @@ export const sendMessage = mutation({
     const id = await ctx.db.insert("messages", {
       chatRoomId: args.chatRoomId,
       senderId: userId,
-      senderName: user.fullname ?? user.name ?? user.email ?? "Користувач",
+      senderName: user.fullname || user.name || user.email || "Користувач",
       senderPhoto: user.image,
       content,
     });
@@ -124,7 +124,7 @@ export const sendMediaMessage = mutation({
     const id = await ctx.db.insert("messages", {
       chatRoomId: args.chatRoomId,
       senderId: userId,
-      senderName: user.fullname ?? user.name ?? user.email ?? "Користувач",
+      senderName: user.fullname || user.name || user.email || "Користувач",
       senderPhoto: user.image,
       content: content || undefined,
       storageId: args.storageId,

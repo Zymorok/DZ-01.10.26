@@ -41,7 +41,7 @@ export const createRoom = mutation({
       title,
       description: description || undefined,
       creatorId: userId,
-      creatorName: user.fullname ?? user.name ?? user.email ?? "Користувач",
+      creatorName: user.fullname || user.name || user.email || "Користувач",
     });
   },
 });

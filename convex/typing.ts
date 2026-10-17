@@ -28,7 +28,7 @@ export const setTyping = mutation({
       indicatorId = await ctx.db.insert("typingIndicators", {
         chatRoomId: args.chatRoomId,
         userId,
-        userName: user.fullname ?? user.name ?? user.email ?? "Користувач",
+        userName: user.fullname || user.name || user.email || "Користувач",
         lastTypedAt,
       });
     }
